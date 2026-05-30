@@ -22,21 +22,32 @@ import { cn } from '@/lib/utils'
 export function Logo({ className, ...props }: SVGProps<SVGSVGElement>) {
   return (
     <svg
-      id='newapi-logo'
-      viewBox='0 0 24 24'
+      id='lcr-logo'
+      viewBox='0 0 48 48'
       xmlns='http://www.w3.org/2000/svg'
-      height='24'
-      width='24'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth='2'
-      strokeLinecap='round'
-      strokeLinejoin='round'
+      height='48'
+      width='48'
       className={cn('size-6', className)}
       {...props}
     >
-      <title>New API</title>
-      <path d='M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3' />
+      <title>Lcr API</title>
+      <defs>
+        <linearGradient id='lcr-grad' x1='0%' y1='0%' x2='100%' y2='100%'>
+          <stop offset='0%' stopColor='#2dd4bf' />
+          <stop offset='100%' stopColor='#0d9488' />
+        </linearGradient>
+      </defs>
+      <rect width='48' height='48' rx='12' fill='url(#lcr-grad)' />
+      <path
+        d='M14 12h6v20h12v6H14V12z'
+        fill='white'
+        opacity='0.95'
+      />
+      <path
+        d='M34 14l-8 10h5l-3 10 8-10h-5l3-10z'
+        fill='white'
+        opacity='0.8'
+      />
     </svg>
   )
 }
