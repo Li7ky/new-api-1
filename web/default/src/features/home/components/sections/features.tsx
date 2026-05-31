@@ -1,117 +1,115 @@
 /*
 Copyright (C) 2023-2026 QuantumNous
 
-LCR API Features Section — Organic Gallery Layout
-Flowing blob accents with soft glass cards
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
 */
+import type { ReactNode } from 'react'
+import { Box, Copy } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import { AnimateInView } from '@/components/animate-in-view'
 
 interface FeaturesProps {
   className?: string
 }
 
+function OpenAIMark() {
+  return (
+    <svg viewBox='0 0 300 300' className='h-full w-full' aria-hidden='true'>
+      {Array.from({ length: 6 }).map((_, index) => (
+        <path
+          key={index}
+          d='M150 45c30 0 54 24 54 54v42h-34V99c0-12-8-20-20-20s-20 8-20 20v102h-34V99c0-30 24-54 54-54Z'
+          fill='none'
+          stroke='currentColor'
+          strokeWidth='8'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          transform={`rotate(${index * 60} 150 150)`}
+        />
+      ))}
+    </svg>
+  )
+}
+
+function ConfigPanel(props: { title: string; children: ReactNode }) {
+  return (
+    <div className='overflow-hidden rounded-2xl border border-[#e8ddd5] bg-background/75'>
+      <div className='flex items-center justify-between border-b border-[#e8ddd5] px-4 py-3 text-sm font-semibold text-muted-foreground'>
+        <span>{props.title}</span>
+        <Copy className='size-4 opacity-60' />
+      </div>
+      <div className='p-5 font-mono text-sm leading-7 text-foreground'>{props.children}</div>
+    </div>
+  )
+}
+
 export function Features(_props: FeaturesProps) {
   const { t } = useTranslation()
 
-  const features = [
-    {
-      id: '01',
-      title: t('Routing & Dispatch'),
-      desc: t('Intelligent load balancing across multiple upstream providers with millisecond precision.'),
-      tags: ['OpenAI', 'Claude', 'Gemini'],
-      gradient: 'organic-gradient-pink',
-    },
-    {
-      id: '02',
-      title: t('Enterprise Security'),
-      desc: t('Fine-grained access controls, comprehensive audit logs, and strict key isolation protocols.'),
-      tags: ['AES-256', 'Role-based'],
-      gradient: 'organic-gradient-cyan',
-    },
-    {
-      id: '03',
-      title: t('Global Distribution'),
-      desc: t('Multi-region deployment guaranteeing 99.9% uptime and automatic failover.'),
-      tags: ['Edge', 'Resilient'],
-      gradient: 'organic-gradient-warm',
-    },
-    {
-      id: '04',
-      title: t('Telemetry'),
-      desc: t('Monitor token consumption and latency metrics through beautiful, precise instrumentation.'),
-      tags: ['Real-time', 'Cost-aware'],
-      gradient: 'organic-gradient-pink',
-    },
-  ]
-
   return (
-    <section className="relative overflow-hidden border-t border-foreground/8 px-6 py-24 md:py-32">
-      {/* Background blob */}
-      <div className="pointer-events-none absolute right-0 top-0 h-[600px] w-[600px] animate-blob-morph-2 organic-gradient-cyan opacity-[0.04]" aria-hidden="true" />
+    <section className='relative grid min-h-screen items-center overflow-hidden px-6 py-24'>
+      <div
+        className='absolute inset-0 opacity-70'
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(20,20,20,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(20,20,20,0.045) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+        }}
+      />
 
-      <div className="mx-auto max-w-7xl">
-        
-        {/* Section Header */}
-        <div className="mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-          <div className="max-w-2xl">
-            <div className="mb-6 flex items-center gap-4">
-              <div className="organic-blob-3 h-2 w-8 bg-primary" />
-              <span className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">
-                {t('Capabilities')}
-              </span>
-            </div>
-            <h2 className="font-editorial text-4xl md:text-5xl leading-tight text-foreground">
-              {t('Engineered for scale.')}
-              <br />
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text italic text-transparent">
-                {t('Refined for the artisan.')}
-              </span>
-            </h2>
+      <div className='relative mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-2'>
+        <div>
+          <div className='mb-6 inline-flex items-center gap-2 rounded-full border border-[#efcfc3] bg-[#fff7f3] px-4 py-2 text-sm font-medium text-[#cf6f4f]'>
+            <Box className='size-4' />
+            {t('命令行工具')}
           </div>
-          <p className="max-w-xs text-sm leading-relaxed text-muted-foreground rounded-2xl border border-foreground/10 bg-primary/[0.03] px-6 py-4">
-            {t('A comprehensive suite of tools disguised as a minimalist interface.')}
+          <h2 className='font-editorial text-5xl font-bold tracking-tight text-foreground md:text-6xl'>
+            Codex CLI
+          </h2>
+          <p className='mt-6 max-w-2xl text-lg leading-9 text-muted-foreground'>
+            {t('Codex CLI 是一款可在本地终端运行的编程助手工具，它能够读取、修改并执行用户指定目录中的代码。')}
           </p>
+
+          <div className='mt-8 space-y-4'>
+            <div className='flex items-center gap-3 rounded-2xl border border-[#e8ddd5] bg-background/75 p-4'>
+              <div className='flex min-w-44 items-center gap-3 rounded-xl border border-[#e8ddd5] px-4 py-3'>
+                <Box className='size-4 text-[#cf6f4f]' />
+                <div>
+                  <div className='text-sm font-bold'>Node.js</div>
+                  <div className='text-xs text-muted-foreground'>npm</div>
+                </div>
+              </div>
+              <div className='overflow-hidden whitespace-nowrap font-mono text-sm text-foreground'>
+                <span className='text-[#d45f43]'>npm install -g</span> @openai/codex
+              </div>
+              <Copy className='ml-auto size-4 text-muted-foreground' />
+            </div>
+
+            <ConfigPanel title='~/.codex/config.toml'>
+              <div><span className='text-[#d45f43]'>model_provider</span> = &quot;aether&quot;</div>
+              <div><span className='text-[#d45f43]'>model</span> = <span className='italic text-[#d45f43]'>&quot;latest-model-name&quot;</span></div>
+              <div><span className='text-[#d45f43]'>model_reasoning_effort</span> = &quot;high&quot;</div>
+              <div><span className='text-[#d45f43]'>network_access</span> = &quot;enabled&quot;</div>
+              <br />
+              <div><span className='text-[#d45f43]'>[model_providers.aether]</span></div>
+              <div><span className='text-[#d45f43]'>name</span> = &quot;OpenAI&quot;</div>
+              <div><span className='text-[#d45f43]'>base_url</span> = &quot;https://api.your-domain.com/v1&quot;</div>
+              <div><span className='text-[#d45f43]'>wire_api</span> = &quot;responses&quot;</div>
+            </ConfigPanel>
+
+            <ConfigPanel title='~/.codex/auth.json'>
+              <div>{'{'}</div>
+              <div className='pl-5'><span className='text-[#d45f43]'>&quot;OPENAI_API_KEY&quot;</span>: <span className='italic text-[#d45f43]'>&quot;your-api-key&quot;</span></div>
+              <div>{'}'}</div>
+            </ConfigPanel>
+          </div>
         </div>
 
-        {/* Organic Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {features.map((f, i) => (
-            <AnimateInView
-              key={f.id}
-              delay={i * 100}
-              animation="fade-up"
-              className="group organic-shadow relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border/50 bg-card/80 p-8 min-h-[360px] backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:organic-glow"
-            >
-              {/* Per-card organic accent */}
-              <div className={`pointer-events-none absolute -right-16 -top-16 h-48 w-48 animate-blob-morph-1 ${f.gradient} opacity-15 transition-opacity duration-500 group-hover:opacity-25`} aria-hidden="true" />
-
-              <div className="relative z-10">
-                <span className="font-editorial text-2xl opacity-40 mb-8 block">
-                  {f.id}
-                </span>
-                <h3 className="font-editorial text-2xl mb-4 leading-snug text-foreground">
-                  {f.title}
-                </h3>
-                <p className="text-sm opacity-70 leading-relaxed max-w-[240px] text-muted-foreground">
-                  {f.desc}
-                </p>
-              </div>
-              
-              <div className="relative z-10 mt-12 flex flex-wrap gap-2">
-                {f.tags.map(tag => (
-                  <span 
-                    key={tag} 
-                    className="rounded-full border border-current/15 bg-primary/5 px-3 py-1 text-[10px] uppercase tracking-widest transition-colors duration-300 group-hover:border-primary/30 group-hover:bg-primary/10"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </AnimateInView>
-          ))}
+        <div className='mx-auto h-[min(48vw,380px)] w-[min(48vw,380px)] text-foreground'>
+          <OpenAIMark />
         </div>
-
       </div>
     </section>
   )

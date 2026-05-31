@@ -1,93 +1,122 @@
 /*
 Copyright (C) 2023-2026 QuantumNous
 
-LCR API How It Works — Organic Timeline
-Flowing connection lines with soft blob markers
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
 */
+import type { ReactNode } from 'react'
+import { Copy, Sparkles } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import { AnimateInView } from '@/components/animate-in-view'
+
+function GeminiStars() {
+  const stars = [
+    ['left-[8%] top-[28%] size-3 opacity-30'],
+    ['left-[18%] top-[34%] size-24 opacity-60'],
+    ['left-[30%] top-[50%] size-44 opacity-100'],
+    ['left-[43%] top-[24%] size-16 opacity-60'],
+    ['left-[53%] top-[28%] size-8 opacity-40'],
+    ['left-[70%] top-[76%] size-8 opacity-30'],
+    ['left-[6%] top-[74%] size-14 opacity-30'],
+    ['left-[42%] top-[76%] size-10 opacity-40'],
+  ]
+
+  return (
+    <div className='absolute inset-0' aria-hidden='true'>
+      {stars.map(([className], index) => (
+        <div
+          key={index}
+          className={`absolute ${className}`}
+          style={{
+            background:
+              'conic-gradient(from 45deg, #ec7a58, #ffcc33, #17b978, #3484ff, #b58cff, #ec7a58)',
+            clipPath:
+              'polygon(50% 0%, 60% 38%, 100% 50%, 60% 62%, 50% 100%, 40% 62%, 0% 50%, 40% 38%)',
+          }}
+        />
+      ))}
+    </div>
+  )
+}
+
+function CodeBlock(props: { title: string; children: ReactNode }) {
+  return (
+    <div className='overflow-hidden rounded-2xl border border-[#e8ddd5] bg-background/75'>
+      <div className='flex items-center justify-between border-b border-[#e8ddd5] px-4 py-3 text-sm font-semibold text-muted-foreground'>
+        <span>{props.title}</span>
+        <Copy className='size-4 opacity-60' />
+      </div>
+      <div className='p-5 font-mono text-sm leading-7 text-foreground'>{props.children}</div>
+    </div>
+  )
+}
 
 export function HowItWorks() {
   const { t } = useTranslation()
 
-  const steps = [
-    {
-      num: 'I',
-      title: t('Configure'),
-      desc: t('Register upstream channels and define strict access policies. A matter of absolute control.'),
-      gradient: 'organic-gradient-pink',
-    },
-    {
-      num: 'II',
-      title: t('Integrate'),
-      desc: t('Swap your base URL. The gateway handles protocol translation invisibly in the background.'),
-      gradient: 'organic-gradient-cyan',
-    },
-    {
-      num: 'III',
-      title: t('Observe'),
-      desc: t('Watch the telemetry flow. Measure latencies, track spend, and optimize routing models.'),
-      gradient: 'organic-gradient-warm',
-    },
-  ]
-
   return (
-    <section className="relative overflow-hidden border-t border-foreground/8 px-6 py-24 md:py-32 bg-card/30">
-      {/* Background blob */}
-      <div className="pointer-events-none absolute -left-20 top-1/3 h-[500px] w-[500px] animate-blob-morph-3 organic-gradient-warm opacity-[0.04]" aria-hidden="true" />
+    <section className='relative grid min-h-screen items-center overflow-hidden px-6 py-24'>
+      <div
+        className='absolute inset-0 opacity-70'
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(20,20,20,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(20,20,20,0.045) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+        }}
+      />
 
-      <div className="mx-auto max-w-7xl">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-          
-          {/* Section Title */}
-          <div className="lg:col-span-4 lg:pr-16">
-            <div className="sticky top-32">
-              <span className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground block mb-6">
-                {t('Methodology')}
-              </span>
-              <h2 className="font-editorial text-4xl leading-tight text-foreground mb-6">
-                {t('The Process.')}
-              </h2>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {t('Deployment is intentionally austere. We strip away the unnecessary, leaving only a direct path from configuration to production.')}
-              </p>
-              {/* Organic decorative blob */}
-              <div className="pointer-events-none mt-12 h-16 w-16 animate-blob-morph-1 organic-gradient-pink opacity-30" aria-hidden="true" />
-            </div>
+      <div className='relative mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-2'>
+        <div className='relative min-h-[520px]'>
+          <GeminiStars />
+        </div>
+
+        <div>
+          <div className='mb-6 inline-flex items-center gap-2 rounded-full border border-[#efcfc3] bg-[#fff7f3] px-4 py-2 text-sm font-medium text-[#cf6f4f]'>
+            <Sparkles className='size-4' />
+            {t('多模态 AI')}
           </div>
+          <h2 className='font-editorial text-5xl font-bold tracking-tight text-foreground md:text-6xl'>
+            Gemini CLI
+          </h2>
+          <p className='mt-6 max-w-2xl text-lg leading-9 text-muted-foreground'>
+            {t('Gemini CLI 是一款开源人工智能代理，可将 Gemini 的强大功能直接带入你的终端。它提供了对 Gemini 的轻量级访问，为你提供了从提示符到我们模型的最直接路径。')}
+          </p>
 
-          {/* Organic Timeline */}
-          <div className="lg:col-span-8">
-            <div className="flex flex-col gap-0 border-l-2 border-primary/10">
-              {steps.map((step, i) => (
-                <AnimateInView
-                  key={step.num}
-                  delay={i * 150}
-                  animation="fade-up"
-                  className="group relative pl-12 pb-16 lg:pb-24 last:pb-0"
-                >
-                  {/* Timeline node — organic blob marker */}
-                  <div className={`absolute left-0 top-0 -translate-x-[7px] h-3.5 w-3.5 animate-blob-morph-1 ${step.gradient} opacity-70 transition-all duration-500 group-hover:opacity-100 group-hover:scale-125`} aria-hidden="true" />
-                  
-                  {/* Roman Numeral Marker */}
-                  <div className="font-editorial text-6xl text-foreground/8 absolute -left-6 top-8 select-none transition-colors duration-500 group-hover:text-primary/15">
-                    {step.num}
-                  </div>
-
-                  <div className="max-w-md relative z-10 pt-4">
-                    <h3 className="font-editorial text-2xl mb-4 text-foreground transition-colors duration-300 group-hover:text-primary">
-                      {step.title}
-                    </h3>
-                    <p className="text-base text-muted-foreground leading-relaxed">
-                      {step.desc}
-                    </p>
-                  </div>
-                </AnimateInView>
-              ))}
+          <div className='mt-8 space-y-4'>
+            <div className='flex items-center gap-3 rounded-2xl border border-[#e8ddd5] bg-background/75 p-4'>
+              <div className='flex min-w-44 items-center gap-3 rounded-xl border border-[#e8ddd5] px-4 py-3'>
+                <Sparkles className='size-4 text-[#cf6f4f]' />
+                <div>
+                  <div className='text-sm font-bold'>Node.js</div>
+                  <div className='text-xs text-muted-foreground'>npm</div>
+                </div>
+              </div>
+              <div className='overflow-hidden whitespace-nowrap font-mono text-sm text-foreground'>
+                <span className='text-[#d45f43]'>npm install -g</span> @google/gemini-cli
+              </div>
+              <Copy className='ml-auto size-4 text-muted-foreground' />
             </div>
-          </div>
 
+            <CodeBlock title='~/.gemini/.env'>
+              <div><span className='text-[#d45f43]'>GOOGLE_GEMINI_BASE_URL</span>=https://api.your-domain.com</div>
+              <div><span className='text-[#d45f43]'>GEMINI_API_KEY</span>=<span className='italic text-[#d45f43]'>your-api-key</span></div>
+              <div><span className='text-[#d45f43]'>GEMINI_MODEL</span>=<span className='italic text-[#d45f43]'>latest-model-name</span></div>
+            </CodeBlock>
+
+            <CodeBlock title='~/.gemini/settings.json'>
+              <div>{'{'}</div>
+              <div className='pl-5'><span className='text-[#d45f43]'>&quot;ide&quot;</span>: {'{'}</div>
+              <div className='pl-10'><span className='text-[#d45f43]'>&quot;enabled&quot;</span>: true</div>
+              <div className='pl-5'>{'},'}</div>
+              <div className='pl-5'><span className='text-[#d45f43]'>&quot;security&quot;</span>: {'{'}</div>
+              <div className='pl-10'><span className='text-[#d45f43]'>&quot;auth&quot;</span>: {'{'}</div>
+              <div className='pl-14'><span className='text-[#d45f43]'>&quot;selectedType&quot;</span>: &quot;gemini-api-key&quot;</div>
+              <div className='pl-10'>{'}'}</div>
+              <div className='pl-5'>{'}'}</div>
+              <div>{'}'}</div>
+            </CodeBlock>
+          </div>
         </div>
       </div>
     </section>
