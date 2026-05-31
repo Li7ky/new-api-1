@@ -1,7 +1,7 @@
 /*
 Copyright (C) 2023-2026 QuantumNous
 
-LCR API Logo — Cyan-to-Pink Yin-Yang style inspired by api.aisz.mom
+LCR API Logo — Organic Blob with pink/purple/cyan gradient
 */
 import { type SVGProps } from 'react'
 import { cn } from '@/lib/utils'
@@ -19,46 +19,46 @@ export function Logo({ className, ...props }: SVGProps<SVGSVGElement>) {
     >
       <title>LCR API</title>
       <defs>
-        {/* Cyan-to-pink gradient matching the yin-yang arcs */}
-        <linearGradient id='lcr-cyan' x1='0%' y1='0%' x2='100%' y2='100%'>
+        <linearGradient id='lcr-organic-1' x1='0%' y1='0%' x2='100%' y2='100%'>
+          <stop offset='0%' stopColor='#c084fc' />
+          <stop offset='50%' stopColor='#f472b6' />
+          <stop offset='100%' stopColor='#22d3ee' />
+        </linearGradient>
+        <linearGradient id='lcr-organic-2' x1='100%' y1='0%' x2='0%' y2='100%'>
           <stop offset='0%' stopColor='#22d3ee' />
-          <stop offset='100%' stopColor='#06b6d4' />
-        </linearGradient>
-        <linearGradient id='lcr-pink' x1='0%' y1='0%' x2='100%' y2='100%'>
-          <stop offset='0%' stopColor='#f472b6' />
-          <stop offset='100%' stopColor='#ec4899' />
-        </linearGradient>
-        <linearGradient id='lcr-star' x1='0%' y1='0%' x2='100%' y2='100%'>
-          <stop offset='0%' stopColor='#67e8f9' />
+          <stop offset='50%' stopColor='#a78bfa' />
           <stop offset='100%' stopColor='#f9a8d4' />
+        </linearGradient>
+        <linearGradient id='lcr-organic-inner' x1='0%' y1='0%' x2='100%' y2='100%'>
+          <stop offset='0%' stopColor='rgba(255,255,255,0.9)' />
+          <stop offset='100%' stopColor='rgba(255,255,255,0.6)' />
         </linearGradient>
       </defs>
 
-      {/* Background disc */}
-      <circle cx='24' cy='24' r='22' fill='#0f172a' opacity='0.08' />
-
-      {/* Left cyan arc */}
+      {/* Outer organic blob */}
       <path
-        d='M24 2 A22 22 0 0 1 24 46 A11 11 0 0 1 24 24 A11 11 0 0 0 24 2Z'
-        fill='url(#lcr-cyan)'
-      />
-      {/* Right pink arc */}
-      <path
-        d='M24 2 A22 22 0 0 0 24 46 A11 11 0 0 0 24 24 A11 11 0 0 1 24 2Z'
-        fill='url(#lcr-pink)'
+        d='M24 2 C32 2 42 8 44 18 C46 28 40 40 30 44 C20 48 6 42 3 32 C0 22 8 6 18 3 C20 2.5 22 2 24 2Z'
+        fill='url(#lcr-organic-1)'
+        opacity='0.85'
       />
 
-      {/* Cyan dot */}
-      <circle cx='24' cy='17' r='3.5' fill='url(#lcr-pink)' />
-      {/* Pink dot */}
-      <circle cx='24' cy='31' r='3.5' fill='url(#lcr-cyan)' />
-
-      {/* Center sparkle / star */}
+      {/* Inner flowing blob — offset and rotated */}
       <path
-        d='M24 20 l1.2 3.8 l3.8 1.2 l-3.8 1.2 l-1.2 3.8 l-1.2-3.8 l-3.8-1.2 l3.8-1.2Z'
-        fill='white'
-        opacity='0.95'
+        d='M22 10 C28 8 36 14 35 22 C34 30 28 36 20 35 C12 34 8 26 10 18 C12 12 16 11 22 10Z'
+        fill='url(#lcr-organic-2)'
+        opacity='0.6'
       />
+
+      {/* Core glow — soft white organic shape */}
+      <path
+        d='M24 17 C27 16 31 19 30 23 C29 27 26 30 22 29 C18 28 17 24 18 20 C19 18 21 17.5 24 17Z'
+        fill='url(#lcr-organic-inner)'
+        opacity='0.7'
+      />
+
+      {/* Accent dot — flowing energy */}
+      <circle cx='28' cy='19' r='2' fill='white' opacity='0.85' />
+      <circle cx='19' cy='28' r='1.5' fill='white' opacity='0.6' />
     </svg>
   )
 }
