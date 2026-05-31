@@ -19,32 +19,37 @@ interface HeroProps {
 
 function NexusMark() {
   return (
-    <svg viewBox='0 0 220 220' className='h-full w-full' aria-hidden='true'>
-      <path
-        d='M110 18 202 188h-26L110 66 44 188H18L110 18Z'
-        fill='none'
-        stroke='currentColor'
-        strokeWidth='10'
-        strokeLinejoin='round'
-        opacity='0.22'
-      />
-      <path
-        d='M93 82c20 39 58 60 95 61M78 108c26 45 70 64 111 62M62 136c31 41 75 56 116 53M126 51c-4 44 10 78 46 104M104 73c0 43 19 72 57 92M86 101c5 38 25 62 62 75'
-        fill='none'
-        stroke='currentColor'
-        strokeWidth='8'
-        strokeLinecap='round'
-        opacity='0.22'
-      />
-      <path
-        d='M64 188c18-48 45-72 89-74M84 188c15-34 41-51 82-54M105 188c12-22 32-33 61-35'
-        fill='none'
-        stroke='currentColor'
-        strokeWidth='8'
-        strokeLinecap='round'
-        opacity='0.22'
-      />
-    </svg>
+    <div className='animate-pulse h-full w-full' aria-hidden='true'>
+      <svg viewBox='0 0 220 220' className='h-full w-full'>
+        <path
+          d='M110 18 202 188h-26L110 66 44 188H18L110 18Z'
+          fill='none'
+          stroke='currentColor'
+          strokeWidth='10'
+          strokeLinejoin='round'
+          className='animate-pulse'
+          style={{ animationDelay: '0s' }}
+        />
+        <path
+          d='M93 82c20 39 58 60 95 61M78 108c26 45 70 64 111 62M62 136c31 41 75 56 116 53M126 51c-4 44 10 78 46 104M104 73c0 43 19 72 57 92M86 101c5 38 25 62 62 75'
+          fill='none'
+          stroke='currentColor'
+          strokeWidth='8'
+          strokeLinecap='round'
+          className='animate-pulse'
+          style={{ animationDelay: '0.4s' }}
+        />
+        <path
+          d='M64 188c18-48 45-72 89-74M84 188c15-34 41-51 82-54M105 188c12-22 32-33 61-35'
+          fill='none'
+          stroke='currentColor'
+          strokeWidth='8'
+          strokeLinecap='round'
+          className='animate-pulse'
+          style={{ animationDelay: '0.8s' }}
+        />
+      </svg>
+    </div>
   )
 }
 
