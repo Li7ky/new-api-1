@@ -1,20 +1,8 @@
 /*
 Copyright (C) 2023-2026 QuantumNous
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-For commercial licensing, please contact support@quantumnous.com
+LCR API Auth Layout — Organic Morph
+A soft, flowing authentication experience with gentle curves and organic accents
 */
 import { Link } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
@@ -30,31 +18,106 @@ export function AuthLayout({ children }: AuthLayoutProps) {
   const { systemName, logo, loading } = useSystemConfig()
 
   return (
-    <div className='relative grid h-svh max-w-none'>
-      <Link
-        to='/'
-        className='absolute top-4 left-4 z-10 flex items-center gap-2 transition-opacity hover:opacity-80 sm:top-8 sm:left-8'
-      >
-        <div className='relative h-8 w-8'>
-          {loading ? (
-            <Skeleton className='absolute inset-0 rounded-full' />
-          ) : (
-            <img
-              src={logo}
-              alt={t('Logo')}
-              className='h-8 w-8 rounded-full object-cover'
-            />
-          )}
+    <div className="relative grid min-h-svh lg:grid-cols-2 bg-background overflow-hidden">
+      
+      {/* Background blob decorations */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="animate-blob-morph-1 organic-gradient-pink absolute -right-20 -top-20 h-[400px] w-[400px] opacity-10" />
+        <div className="animate-blob-morph-2 organic-gradient-cyan absolute -left-20 bottom-0 h-[300px] w-[300px] opacity-8" />
+      </div>
+
+      {/* Left Panel */}
+      <div className="relative hidden flex-col justify-between rounded-r-3xl bg-muted/30 p-16 text-foreground lg:flex overflow-hidden">
+        
+        {/* Top brand */}
+        <div className="relative z-10">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-4 transition-opacity hover:opacity-70"
+          >
+            <div className="organic-shadow relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-border/50 bg-background p-2">
+              {loading ? (
+                <Skeleton className="absolute inset-0 rounded-2xl" />
+              ) : (
+                <img
+                  src={logo}
+                  alt={t('Logo')}
+                  className="h-full w-full object-contain"
+                />
+              )}
+            </div>
+            {loading ? (
+              <Skeleton className="h-6 w-32 rounded-xl" />
+            ) : (
+              <h1 className="font-editorial text-2xl tracking-wide">{systemName}</h1>
+            )}
+          </Link>
         </div>
-        {loading ? (
-          <Skeleton className='h-6 w-24' />
-        ) : (
-          <h1 className='text-xl font-medium'>{systemName}</h1>
-        )}
-      </Link>
-      <div className='container flex items-center pt-16 sm:pt-0'>
-        <div className='mx-auto flex w-full flex-col justify-center space-y-2 px-4 py-8 sm:w-[480px] sm:p-8'>
-          {children}
+
+        {/* Center content */}
+        <div className="relative z-10 max-w-lg mt-auto mb-32">
+          <div className="mb-8 flex items-center gap-4">
+            <div className="organic-blob-3 h-2 w-6 bg-primary/40" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+              Gateway Access
+            </span>
+          </div>
+          
+          <h2 className="font-editorial text-5xl leading-[1.1] text-foreground mb-8">
+            {t('Command.')}
+            <br />
+            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text italic text-transparent">
+              {t('Control.')}
+            </span>
+            <br />
+            {t('Compute.')}
+          </h2>
+          
+          <p className="text-sm leading-relaxed text-muted-foreground max-w-sm rounded-2xl border-l-2 border-primary/20 bg-primary/[0.03] py-3 pl-4 pr-6">
+            {t(
+              'Enter the secure enclave. Manage keys, monitor traffic, and orchestrate models with absolute precision.'
+            )}
+          </p>
+        </div>
+
+        {/* Bottom */}
+        <div className="relative z-10 flex justify-between items-end pt-6 text-xs uppercase tracking-widest text-muted-foreground">
+          <span>Vol. 01</span>
+          <span>&copy; {new Date().getFullYear()}</span>
+        </div>
+      </div>
+
+      {/* Right auth panel */}
+      <div className="relative flex flex-col bg-background">
+        {/* Mobile header */}
+        <div className="flex items-center justify-between p-6 lg:hidden">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-3 transition-opacity hover:opacity-70"
+          >
+            <div className="organic-shadow relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-xl border border-border/50 bg-background p-1">
+              {loading ? (
+                <Skeleton className="absolute inset-0 rounded-xl" />
+              ) : (
+                <img
+                  src={logo}
+                  alt={t('Logo')}
+                  className="h-full w-full object-contain"
+                />
+              )}
+            </div>
+            {loading ? (
+              <Skeleton className="h-5 w-24 rounded-lg" />
+            ) : (
+              <span className="font-editorial text-lg">{systemName}</span>
+            )}
+          </Link>
+        </div>
+
+        <div className="flex flex-1 items-center justify-center px-6 py-12">
+          <div className="w-full max-w-sm">
+            {children}
+          </div>
         </div>
       </div>
     </div>

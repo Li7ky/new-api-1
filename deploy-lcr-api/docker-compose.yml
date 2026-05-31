@@ -1,0 +1,61 @@
+version: '3.4'
+
+services:
+  lcr-api:
+    image: debian:bookworm-slim
+    container_name: lcr-api
+    restart: always
+    working_dir: /app
+    command: ["/app/lcr-api", "--log-dir", "/app/logs"]
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./lcr-api:/app/lcr-api:ro
+      - ./data:/data
+      - ./logs:/app/logs
+    environment:
+      - SQL_DSN=postgresql://root:CHANGE_ME@postgres:5432/new-api
+      - REDIS_CONN_STRING=redis://:CHANGE_ME@redis:6379
+      - TZ=Asia/Shanghai
+      - ERROR_LOG_ENABLED=true
+      - BATCH_UPDATE_ENABLED=true
+      - NODE_NAME=lcr-api-node-1
+      - SESSION_SECRET=CHANGE_ME_RANDOM_STRING
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - lcr-api-network
+    healthcheck:
+      test: ["CMD-SHELL", "./lcr-api --version >/dev/null 2>&1 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  redis:
+    image: redis:latest
+    container_name: lcr-api-redis
+    restart: always
+    command: ["redis-server", "--requirepass", "CHANGE_ME"]
+    networks:
+      - lcr-api-network
+
+  postgres:
+    image: postgres:15
+    container_name: lcr-api-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: CHANGE_ME
+      POSTGRES_DB: new-api
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - lcr-api-network
+
+volumes:
+  pg_data:
+
+networks:
+  lcr-api-network:
+    driver: bridge

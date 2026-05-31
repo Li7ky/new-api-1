@@ -75,7 +75,7 @@ export function CTA(props: CTAProps) {
           </Button>
         </div>
 
-        <div className="mt-24 pt-8 border-t border-background/10 text-xs uppercase tracking-widest text-background/35">
+        <div className="mt-24 pt-8 border-t border-background/8 text-xs uppercase tracking-widest text-background/35">
           <span>{t('Forged from the new-api repository.')}</span>
           <a
             href="https://github.com/Calcium-Ion/new-api"

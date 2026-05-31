@@ -57,7 +57,7 @@ function EmptyAboutState() {
         </div>
         <div className='space-y-4 text-sm'>
           <p>
-            {t('New API Project Repository:')}{' '}
+            {t('LCR API Project Repository:')}{' '}
             <a
               href='https://github.com/QuantumNous/new-api'
               target='_blank'
@@ -68,15 +68,7 @@ function EmptyAboutState() {
             </a>
           </p>
           <p className='text-muted-foreground'>
-            <a
-              href='https://github.com/QuantumNous/new-api'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-primary hover:underline'
-            >
-              {t('NewAPI')}
-            </a>{' '}
-            © {currentYear}{' '}
+            {t('LCR API')} © {currentYear}{' '}
             <a
               href='https://github.com/QuantumNous'
               target='_blank'
@@ -84,6 +76,24 @@ function EmptyAboutState() {
               className='text-primary hover:underline'
             >
               {t('QuantumNous')}
+            </a>{' '}
+            {t('| Based on')}{' '}
+            <a
+              href='https://github.com/Calcium-Ion/new-api'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-primary hover:underline'
+            >
+              {t('New API')}
+            </a>{' '}
+            {t('by')}{' '}
+            <a
+              href='https://github.com/Calcium-Ion'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-primary hover:underline'
+            >
+              {t('Calcium-Ion')}
             </a>{' '}
             {t('| Based on')}{' '}
             <a

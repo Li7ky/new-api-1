@@ -41,7 +41,7 @@ export function HowItWorks() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           
           {/* Section Title */}
-          <div className="lg:col-span-4 lg:border-r lg:border-foreground/8 lg:pr-16">
+          <div className="lg:col-span-4 lg:pr-16">
             <div className="sticky top-32">
               <span className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground block mb-6">
                 {t('Methodology')}
@@ -59,7 +59,7 @@ export function HowItWorks() {
 
           {/* Organic Timeline */}
           <div className="lg:col-span-8">
-            <div className="flex flex-col gap-0 border-l-2 border-primary/15">
+            <div className="flex flex-col gap-0 border-l-2 border-primary/10">
               {steps.map((step, i) => (
                 <AnimateInView
                   key={step.num}

@@ -1,11 +1,30 @@
 ﻿<svg viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg' width='256' height='256'>
   <defs>
     <linearGradient id='lcr-grad' x1='0%' y1='0%' x2='100%' y2='100%'>
-      <stop offset='0%' stop-color='#2dd4bf' />
-      <stop offset='100%' stop-color='#0d9488' />
+      <stop offset='0%' stop-color='#6366f1' />
+      <stop offset='100%' stop-color='#8b5cf6' />
     </linearGradient>
   </defs>
   <rect width='48' height='48' rx='12' fill='url(#lcr-grad)' />
-  <path d='M14 12h6v20h12v6H14V12z' fill='white' opacity='0.95' />
-  <path d='M34 14l-8 10h5l-3 10 8-10h-5l3-10z' fill='white' opacity='0.8' />
+  <g transform='translate(24,24)' fill='white' opacity='0.95'>
+    <polygon points='0,-14 12.12,-7 12.12,7 0,14 -12.12,7 -12.12,-7' fill='none' stroke='white' stroke-width='1.8' opacity='0.7' />
+    <polygon points='0,-8 6.93,-4 6.93,4 0,8 -6.93,4 -6.93,-4' fill='white' opacity='0.9' />
+    <circle cx='0' cy='0' r='2.5' fill='#6366f1' />
+  </g>
+  <g fill='white' opacity='0.5'>
+    <circle cx='24' cy='6' r='1.5' />
+    <circle cx='37.5' cy='13.5' r='1.5' />
+    <circle cx='37.5' cy='34.5' r='1.5' />
+    <circle cx='24' cy='42' r='1.5' />
+    <circle cx='10.5' cy='34.5' r='1.5' />
+    <circle cx='10.5' cy='13.5' r='1.5' />
+  </g>
+  <g stroke='white' stroke-width='0.8' opacity='0.35'>
+    <line x1='24' y1='10' x2='24' y2='16' />
+    <line x1='34.5' y1='16' x2='30' y2='18' />
+    <line x1='34.5' y1='32' x2='30' y2='30' />
+    <line x1='24' y1='38' x2='24' y2='32' />
+    <line x1='13.5' y1='32' x2='18' y2='30' />
+    <line x1='13.5' y1='16' x2='18' y2='18' />
+  </g>
 </svg>

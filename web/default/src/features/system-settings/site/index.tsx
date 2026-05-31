@@ -27,7 +27,7 @@ import {
 const defaultSiteSettings: SiteSettings = {
   'theme.frontend': 'default',
   Notice: '',
-  SystemName: 'Lcr API',
+  SystemName: 'LCR API',
   Logo: '',
   Footer: '',
   About: '',

@@ -101,11 +101,11 @@ export function Hero(props: HeroProps) {
               </div>
               
               <div className="mt-8 space-y-0">
-                <div className="flex justify-between items-end border-b border-foreground/8 pb-4 mb-4">
+                <div className="flex justify-between items-end rounded-xl bg-muted/30 px-3 py-3 mb-3">
                   <span className="text-xs uppercase tracking-widest text-muted-foreground">Protocol</span>
                   <span className="font-editorial text-lg">OpenAI Native</span>
                 </div>
-                <div className="flex justify-between items-end border-b border-foreground/8 pb-4 mb-4">
+                <div className="flex justify-between items-end rounded-xl bg-muted/30 px-3 py-3 mb-3">
                   <span className="text-xs uppercase tracking-widest text-muted-foreground">Latency</span>
                   <span className="font-editorial text-lg">&lt; 50ms</span>
                 </div>
