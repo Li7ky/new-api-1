@@ -29,6 +29,7 @@ For commercial licensing, please contact support@quantumnous.com
 
 @import './theme.css';
 @import './theme-presets.css';
+@import './lcr-overrides.css';
 
 /* Shiki dual themes: token colors follow dark theme (pre background stays `bg-background` on the block) */
 @layer components {
@@ -383,6 +384,72 @@ For commercial licensing, please contact support@quantumnous.com
   .scroll-container:hover .animate-scroll-down {
     animation-play-state: paused;
   }
+
+  /* ── Organic morph utilities ─────────────────────────────────────────── */
+
+  .organic-blob-1 {
+    clip-path: path('M400 80C480 20 580 0 640 60C700 120 720 220 680 300C640 380 560 420 480 400C400 380 320 440 240 400C160 360 80 300 60 220C40 140 100 60 200 40C300 20 320 140 400 80Z');
+  }
+
+  .organic-blob-2 {
+    clip-path: path('M300 40C380 0 500 20 560 80C620 140 640 260 600 340C560 420 460 460 380 440C300 420 220 480 140 440C60 400 0 320 20 240C40 160 100 80 180 60C260 40 220 80 300 40Z');
+  }
+
+  .organic-blob-3 {
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 60%;
+  }
+
+  .organic-blob-4 {
+    border-radius: 40% 60% 30% 70% / 60% 40% 70% 30%;
+  }
+
+  .organic-gradient-pink {
+    background: linear-gradient(135deg, oklch(0.82 0.1 350), oklch(0.72 0.14 320), oklch(0.68 0.16 280));
+  }
+
+  .organic-gradient-cyan {
+    background: linear-gradient(135deg, oklch(0.75 0.1 200), oklch(0.72 0.14 220), oklch(0.68 0.12 250));
+  }
+
+  .organic-gradient-warm {
+    background: linear-gradient(135deg, oklch(0.85 0.06 310), oklch(0.78 0.1 320), oklch(0.72 0.08 200));
+  }
+
+  .dark .organic-gradient-pink {
+    background: linear-gradient(135deg, oklch(0.42 0.12 350), oklch(0.38 0.14 320), oklch(0.35 0.12 280));
+  }
+
+  .dark .organic-gradient-cyan {
+    background: linear-gradient(135deg, oklch(0.38 0.1 200), oklch(0.35 0.12 220), oklch(0.32 0.1 250));
+  }
+
+  .dark .organic-gradient-warm {
+    background: linear-gradient(135deg, oklch(0.32 0.06 310), oklch(0.28 0.08 320), oklch(0.26 0.06 200));
+  }
+
+  .organic-shadow {
+    box-shadow:
+      0 2px 8px rgb(0 0 0 / 0.02),
+      0 8px 30px rgb(0 0 0 / 0.04);
+  }
+
+  .dark .organic-shadow {
+    box-shadow:
+      0 2px 8px rgb(0 0 0 / 0.1),
+      0 8px 30px rgb(0 0 0 / 0.2);
+  }
+
+  .organic-glow {
+    box-shadow:
+      0 0 40px oklch(0.72 0.14 320 / 0.12),
+      0 0 80px oklch(0.68 0.16 280 / 0.06);
+  }
+
+  .dark .organic-glow {
+    box-shadow:
+      0 0 40px oklch(0.5 0.14 320 / 0.15),
+      0 0 80px oklch(0.45 0.16 280 / 0.08);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -475,28 +542,29 @@ For commercial licensing, please contact support@quantumnous.com
   }
 }
 
-/* Micro-interactions — Vercel-style subtle hover/active feedback */
+/* Micro-interactions — Organic morph hover/active feedback */
 @media (prefers-reduced-motion: no-preference) {
   [data-slot='card'] {
     transition:
-      transform 150ms ease,
-      box-shadow 150ms ease;
+      transform 280ms cubic-bezier(0.34, 1.2, 0.64, 1),
+      box-shadow 280ms ease;
   }
 
   @media (min-width: 641px) {
     [data-slot='card']:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.06);
+      transform: scale(1.015) rotate(0.3deg);
+      box-shadow: 0 8px 30px rgb(0 0 0 / 0.04);
     }
 
     .dark [data-slot='card']:hover {
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
+      box-shadow: 0 8px 30px rgb(0 0 0 / 0.2);
     }
   }
 
   button:not(:disabled):active,
   [role='button']:not(:disabled):active {
-    transform: scale(0.98);
+    transform: scale(0.97);
+    transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   [data-slot='table'] tr {
@@ -598,10 +666,97 @@ For commercial licensing, please contact support@quantumnous.com
   animation: terminal-demo-pulse 1.5s ease-in-out infinite;
 }
 
+/* ── Organic blob morph animations ── */
+@keyframes blob-morph-1 {
+  0%,
+  100% {
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 60%;
+  }
+  25% {
+    border-radius: 40% 60% 50% 50% / 60% 40% 60% 40%;
+  }
+  50% {
+    border-radius: 30% 70% 40% 60% / 40% 70% 30% 60%;
+  }
+  75% {
+    border-radius: 50% 50% 60% 40% / 55% 45% 50% 50%;
+  }
+}
+
+@keyframes blob-morph-2 {
+  0%,
+  100% {
+    border-radius: 40% 60% 30% 70% / 60% 40% 70% 30%;
+  }
+  25% {
+    border-radius: 70% 30% 60% 40% / 30% 70% 40% 60%;
+  }
+  50% {
+    border-radius: 50% 50% 70% 30% / 40% 60% 50% 50%;
+  }
+  75% {
+    border-radius: 30% 70% 40% 60% / 70% 30% 60% 40%;
+  }
+}
+
+@keyframes blob-morph-3 {
+  0%,
+  100% {
+    border-radius: 50% 50% 40% 60% / 45% 55% 60% 40%;
+    transform: rotate(0deg) scale(1);
+  }
+  33% {
+    border-radius: 60% 40% 55% 45% / 50% 50% 45% 55%;
+    transform: rotate(2deg) scale(1.02);
+  }
+  66% {
+    border-radius: 45% 55% 60% 40% / 55% 45% 50% 50%;
+    transform: rotate(-1deg) scale(0.98);
+  }
+}
+
+.animate-blob-morph-1 {
+  animation: blob-morph-1 8s ease-in-out infinite;
+  will-change: border-radius;
+}
+
+.animate-blob-morph-2 {
+  animation: blob-morph-2 10s ease-in-out infinite;
+  will-change: border-radius;
+}
+
+.animate-blob-morph-3 {
+  animation: blob-morph-3 6s ease-in-out infinite;
+  will-change: border-radius, transform;
+}
+
+@keyframes organic-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(4px) rotate(-0.5deg);
+  }
+}
+
+.animate-organic-float {
+  animation: organic-float 7s ease-in-out infinite;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .terminal-demo-blink,
   .terminal-demo-spin,
-  .terminal-demo-pulse {
+  .terminal-demo-pulse,
+  .animate-blob-morph-1,
+  .animate-blob-morph-2,
+  .animate-blob-morph-3,
+  .animate-organic-float {
     animation: none !important;
+    transform: none !important;
   }
 }

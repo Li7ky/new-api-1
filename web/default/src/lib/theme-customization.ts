@@ -25,6 +25,21 @@ For commercial licensing, please contact support@quantumnous.com
 
 export const THEME_PRESETS = [
   {
+    value: 'lcr-analog',
+    name: 'LCR Analog',
+    swatches: ['oklch(0.97 0.005 90)', 'oklch(0.6 0.12 35)'],
+  },
+  {
+    value: 'lcr-candy',
+    name: 'LCR Candy',
+    swatches: ['oklch(0.68 0.18 220)', 'oklch(0.65 0.22 340)'],
+  },
+  {
+    value: 'lcr-violet',
+    name: 'LCR Violet',
+    swatches: ['oklch(0.5564 0.2215 265)', 'oklch(0.5879 0.1902 279.5)'],
+  },
+  {
     value: 'default',
     name: 'Default',
     swatches: ['oklch(0.13 0 0)', 'oklch(0.95 0 0)'],
@@ -77,6 +92,11 @@ export const THEME_PRESETS = [
     name: 'Lavender Dream',
     swatches: ['oklch(0.5709 0.1808 306.89)', 'oklch(0.811 0.0589 201.14)'],
   },
+  {
+    value: 'lcr-organic',
+    name: 'LCR Organic',
+    swatches: ['oklch(0.65 0.18 320)', 'oklch(0.72 0.14 200)'],
+  },
 ] as const
 
 export type ThemePreset = (typeof THEME_PRESETS)[number]['value']
@@ -116,9 +136,9 @@ export type ThemeCustomization = {
 }
 
 export const DEFAULT_THEME_CUSTOMIZATION: ThemeCustomization = {
-  preset: 'forest-whisper',
+  preset: 'lcr-analog',
   font: 'default',
-  radius: 'default',
+  radius: 'none',
   scale: 'default',
   contentLayout: 'full',
 }
@@ -178,6 +198,7 @@ export const PRESET_DEFAULT_FONT: Partial<
 > = {
   default: 'sans',
   anthropic: 'serif',
+  'lcr-analog': 'serif',
 }
 
 /**

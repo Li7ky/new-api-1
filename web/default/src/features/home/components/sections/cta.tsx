@@ -1,26 +1,13 @@
 /*
 Copyright (C) 2023-2026 QuantumNous
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-For commercial licensing, please contact support@quantumnous.com
+LCR API CTA Section — Organic Flow
+Blob background with gradient text and soft rounded buttons
 */
 import { Link } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
-import { AnimateInView } from '@/components/animate-in-view'
 
 interface CTAProps {
   className?: string
@@ -35,49 +22,72 @@ export function CTA(props: CTAProps) {
   }
 
   return (
-    <section className='relative z-10 overflow-hidden px-6 py-24 md:py-32'>
-      {/* Gradient mesh background */}
-      <div
-        aria-hidden
-        className='absolute inset-0 -z-10 opacity-20 dark:opacity-[0.08]'
-        style={{
-          background: [
-            'radial-gradient(ellipse 50% 50% at 30% 50%, oklch(0.7 0.15 250 / 70%) 0%, transparent 70%)',
-            'radial-gradient(ellipse 40% 40% at 70% 40%, oklch(0.65 0.12 200 / 50%) 0%, transparent 70%)',
-          ].join(', '),
-        }}
-      />
+    <section className="relative overflow-hidden px-6 py-32 md:py-48">
+      {/* Organic blob background */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="absolute inset-0 bg-gradient-to-br from-foreground via-foreground/95 to-primary/80" />
+        <div className="animate-blob-morph-1 animate-organic-float organic-gradient-pink absolute -right-32 -top-32 h-[600px] w-[600px] opacity-20" />
+        <div className="animate-blob-morph-2 organic-gradient-cyan absolute -bottom-24 -left-24 h-[400px] w-[400px] opacity-15" />
+        <div className="animate-blob-morph-3 organic-gradient-warm absolute right-1/4 top-1/3 h-[300px] w-[300px] opacity-10" />
+      </div>
 
-      <AnimateInView
-        className='mx-auto max-w-2xl text-center'
-        animation='scale-in'
-      >
-        <h2 className='text-2xl leading-tight font-bold tracking-tight md:text-4xl'>
-          {t('Ready to simplify')}
+      <div className="relative mx-auto max-w-4xl text-center">
+        
+        <div className="mb-12 inline-flex items-center gap-4">
+          <div className="organic-blob-3 h-2 w-6 bg-background/40" />
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-background/60">
+            {t('Open Source & Self-Hosted')}
+          </span>
+          <div className="organic-blob-4 h-2 w-6 bg-background/40" />
+        </div>
+
+        <h2 className="font-editorial text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.1] tracking-tight mb-8 text-background">
+          {t('A Quiet Revolution')}
           <br />
-          <span className='bg-gradient-to-r from-blue-400 via-violet-400 to-purple-500 bg-clip-text text-transparent'>
-            {t('your AI integration?')}
+          <span className="italic text-background/50">
+            {t('in API Architecture.')}
           </span>
         </h2>
-        <p className='text-muted-foreground/80 mx-auto mt-5 max-w-md text-sm leading-relaxed md:text-base'>
+
+        <p className="mx-auto max-w-lg text-lg leading-relaxed text-background/60 mb-16">
           {t(
-            'Deploy your own gateway and start routing requests through your configured upstream services.'
+            'Deploy the gateway. Connect fifty providers. Measure everything. Control absolute.'
           )}
         </p>
-        <div className='mt-8 flex items-center justify-center gap-3'>
-          <Button className='group rounded-lg' render={<Link to='/sign-up' />}>
-            {t('Get Started')}
-            <ArrowRight className='ml-1 size-3.5 transition-transform duration-200 group-hover:translate-x-0.5' />
-          </Button>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
           <Button
-            variant='outline'
-            className='border-border/50 hover:border-border hover:bg-muted/50 rounded-lg'
-            render={<Link to='/pricing' />}
+            size="lg"
+            className="organic-shadow rounded-2xl bg-background text-foreground px-10 h-14 text-sm tracking-widest transition-all duration-280 hover:scale-[1.02] hover:organic-glow"
+            render={<Link to="/sign-up" />}
+          >
+            {t('Deploy Now')}
+            <ArrowRight className="ml-3 h-4 w-4" />
+          </Button>
+
+          <Button
+            size="lg"
+            variant="outline"
+            className="rounded-2xl border-background/25 text-background px-10 h-14 text-sm tracking-widest transition-all duration-280 hover:bg-background/10 hover:border-background/40 hover:scale-[1.02]"
+            render={<Link to="/pricing" />}
           >
             {t('View Pricing')}
           </Button>
         </div>
-      </AnimateInView>
+
+        <div className="mt-24 pt-8 border-t border-background/10 text-xs uppercase tracking-widest text-background/35">
+          <span>{t('Forged from the new-api repository.')}</span>
+          <a
+            href="https://github.com/Calcium-Ion/new-api"
+            target="_blank"
+            rel="noreferrer"
+            className="ml-4 underline underline-offset-4 hover:text-background transition-colors"
+          >
+            {t('View Source')}
+          </a>
+        </div>
+
+      </div>
     </section>
   )
 }

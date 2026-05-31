@@ -1,31 +1,9 @@
 /*
 Copyright (C) 2023-2026 QuantumNous
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-For commercial licensing, please contact support@quantumnous.com
+LCR API Features Section — Organic Gallery Layout
+Flowing blob accents with soft glass cards
 */
-import {
-  Zap,
-  Shield,
-  Globe,
-  Code,
-  Gauge,
-  DollarSign,
-  Users,
-  HeartHandshake,
-} from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { AnimateInView } from '@/components/animate-in-view'
 
@@ -38,202 +16,102 @@ export function Features(_props: FeaturesProps) {
 
   const features = [
     {
-      id: 'fast',
-      num: '01',
-      title: t('Lightning Fast'),
-      desc: t(
-        'Optimized network architecture ensures millisecond response times'
-      ),
-      span: 'md:col-span-2',
-      icon: <Zap className='size-4 text-blue-400' />,
-      visual: (
-        <div className='mt-4 grid grid-cols-3 gap-2'>
-          {['OpenAI', 'Claude', 'Gemini', 'DeepSeek', 'Qwen', 'Llama'].map(
-            (name) => (
-              <div
-                key={name}
-                className='border-border/30 bg-muted/20 text-muted-foreground flex items-center justify-center rounded-lg border px-3 py-2 text-xs transition-colors duration-300 hover:border-blue-500/30 hover:bg-blue-500/5'
-              >
-                {name}
-              </div>
-            )
-          )}
-        </div>
-      ),
+      id: '01',
+      title: t('Routing & Dispatch'),
+      desc: t('Intelligent load balancing across multiple upstream providers with millisecond precision.'),
+      tags: ['OpenAI', 'Claude', 'Gemini'],
+      gradient: 'organic-gradient-pink',
     },
     {
-      id: 'secure',
-      num: '02',
-      title: t('Secure & Reliable'),
-      desc: t(
-        'Enterprise-grade security with comprehensive permission management'
-      ),
-      span: 'md:col-span-1',
-      icon: <Shield className='size-4 text-emerald-400' />,
-      visual: (
-        <div className='mt-4 flex items-center justify-center'>
-          <div className='relative'>
-            <div className='flex size-16 items-center justify-center rounded-2xl border border-emerald-500/20 bg-emerald-500/5'>
-              <Shield
-                className='size-7 text-emerald-500/70'
-                strokeWidth={1.5}
-              />
-            </div>
-            <div className='absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full bg-emerald-500'>
-              <svg
-                className='size-2.5 text-white'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-                strokeWidth={3}
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='m4.5 12.75 6 6 9-13.5'
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-      ),
+      id: '02',
+      title: t('Enterprise Security'),
+      desc: t('Fine-grained access controls, comprehensive audit logs, and strict key isolation protocols.'),
+      tags: ['AES-256', 'Role-based'],
+      gradient: 'organic-gradient-cyan',
     },
     {
-      id: 'global',
-      num: '03',
-      title: t('Global Coverage'),
-      desc: t('Multi-region deployment for stable global access'),
-      span: 'md:col-span-1',
-      icon: <Globe className='size-4 text-violet-400' />,
-      visual: (
-        <div className='mt-4 space-y-2'>
-          {[t('Load Balancing'), t('Rate Limiting'), t('Cost Tracking')].map(
-            (step, i) => (
-              <div key={step} className='flex items-center gap-2'>
-                <div
-                  className={`flex size-6 items-center justify-center rounded-full text-[10px] font-bold ${
-                    i === 1
-                      ? 'border border-blue-500/30 bg-blue-500/20 text-blue-500'
-                      : 'border-border/40 bg-muted text-muted-foreground border'
-                  }`}
-                >
-                  {i + 1}
-                </div>
-                <div className='bg-border/40 h-px flex-1' />
-                <span className='text-muted-foreground text-xs'>{step}</span>
-              </div>
-            )
-          )}
-        </div>
-      ),
+      id: '03',
+      title: t('Global Distribution'),
+      desc: t('Multi-region deployment guaranteeing 99.9% uptime and automatic failover.'),
+      tags: ['Edge', 'Resilient'],
+      gradient: 'organic-gradient-warm',
     },
     {
-      id: 'developer',
-      num: '04',
-      title: t('Developer Friendly'),
-      desc: t('Compatible API routes for common AI application workflows'),
-      span: 'md:col-span-2',
-      icon: <Code className='size-4 text-amber-400' />,
-      visual: (
-        <div className='mt-4 flex items-center gap-3'>
-          <div className='flex -space-x-2'>
-            {['API', 'SDK', 'CLI', 'Docs'].map((n) => (
-              <div
-                key={n}
-                className='border-background from-muted to-muted/60 text-muted-foreground flex size-8 items-center justify-center rounded-full border-2 bg-gradient-to-br text-[9px] font-bold'
-              >
-                {n}
-              </div>
-            ))}
-          </div>
-          <div className='text-muted-foreground flex items-center gap-1.5 text-xs'>
-            <Code className='size-3.5 text-blue-500' />
-            {t('Multi-protocol Compatible')}
-          </div>
-        </div>
-      ),
-    },
-  ]
-
-  const additionalFeatures = [
-    {
-      icon: <Gauge className='size-5' strokeWidth={1.5} />,
-      title: t('High Performance'),
-      desc: t('Support for high concurrency with automatic load balancing'),
-    },
-    {
-      icon: <DollarSign className='size-5' strokeWidth={1.5} />,
-      title: t('Transparent Billing'),
-      desc: t('Pay-as-you-go with real-time usage monitoring'),
-    },
-    {
-      icon: <Users className='size-5' strokeWidth={1.5} />,
-      title: t('Team Collaboration'),
-      desc: t('Multi-user management with flexible permission allocation'),
-    },
-    {
-      icon: <HeartHandshake className='size-5' strokeWidth={1.5} />,
-      title: t('Open Source'),
-      desc: t('Community driven, self-hosted, and extensible'),
+      id: '04',
+      title: t('Telemetry'),
+      desc: t('Monitor token consumption and latency metrics through beautiful, precise instrumentation.'),
+      tags: ['Real-time', 'Cost-aware'],
+      gradient: 'organic-gradient-pink',
     },
   ]
 
   return (
-    <section className='relative z-10 px-6 py-24 md:py-32'>
-      <div className='mx-auto max-w-6xl'>
-        <AnimateInView className='mb-16 max-w-lg'>
-          <p className='text-muted-foreground mb-3 text-xs font-medium tracking-widest uppercase'>
-            {t('Core Features')}
-          </p>
-          <h2 className='text-2xl leading-tight font-bold tracking-tight md:text-3xl'>
-            {t('Built for developers,')}
-            <br />
-            {t('designed for scale')}
-          </h2>
-        </AnimateInView>
+    <section className="relative overflow-hidden border-t border-foreground/8 px-6 py-24 md:py-32">
+      {/* Background blob */}
+      <div className="pointer-events-none absolute right-0 top-0 h-[600px] w-[600px] animate-blob-morph-2 organic-gradient-cyan opacity-[0.04]" aria-hidden="true" />
 
-        {/* Bento grid */}
-        <div className='border-border/40 bg-border/40 grid gap-px overflow-hidden rounded-xl border md:grid-cols-3'>
+      <div className="mx-auto max-w-7xl">
+        
+        {/* Section Header */}
+        <div className="mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <div className="max-w-2xl">
+            <div className="mb-6 flex items-center gap-4">
+              <div className="organic-blob-3 h-2 w-8 bg-primary" />
+              <span className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">
+                {t('Capabilities')}
+              </span>
+            </div>
+            <h2 className="font-editorial text-4xl md:text-5xl leading-tight text-foreground">
+              {t('Engineered for scale.')}
+              <br />
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text italic text-transparent">
+                {t('Refined for the artisan.')}
+              </span>
+            </h2>
+          </div>
+          <p className="max-w-xs text-sm leading-relaxed text-muted-foreground rounded-2xl border border-foreground/10 bg-primary/[0.03] px-6 py-4">
+            {t('A comprehensive suite of tools disguised as a minimalist interface.')}
+          </p>
+        </div>
+
+        {/* Organic Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {features.map((f, i) => (
             <AnimateInView
               key={f.id}
               delay={i * 100}
-              animation='scale-in'
-              className={`bg-background group hover:bg-muted/20 p-7 transition-colors duration-300 md:p-8 ${f.span}`}
+              animation="fade-up"
+              className="group organic-shadow relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border/50 bg-card/80 p-8 min-h-[360px] backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:organic-glow"
             >
-              <div className='mb-3 flex items-center gap-3'>
-                <span className='border-border/40 bg-muted text-muted-foreground flex size-7 items-center justify-center rounded-md border text-[10px] font-semibold tabular-nums'>
-                  {f.num}
+              {/* Per-card organic accent */}
+              <div className={`pointer-events-none absolute -right-16 -top-16 h-48 w-48 animate-blob-morph-1 ${f.gradient} opacity-15 transition-opacity duration-500 group-hover:opacity-25`} aria-hidden="true" />
+
+              <div className="relative z-10">
+                <span className="font-editorial text-2xl opacity-40 mb-8 block">
+                  {f.id}
                 </span>
-                <h3 className='text-sm font-semibold'>{f.title}</h3>
+                <h3 className="font-editorial text-2xl mb-4 leading-snug text-foreground">
+                  {f.title}
+                </h3>
+                <p className="text-sm opacity-70 leading-relaxed max-w-[240px] text-muted-foreground">
+                  {f.desc}
+                </p>
               </div>
-              <p className='text-muted-foreground text-sm leading-relaxed'>
-                {f.desc}
-              </p>
-              {f.visual}
+              
+              <div className="relative z-10 mt-12 flex flex-wrap gap-2">
+                {f.tags.map(tag => (
+                  <span 
+                    key={tag} 
+                    className="rounded-full border border-current/15 bg-primary/5 px-3 py-1 text-[10px] uppercase tracking-widest transition-colors duration-300 group-hover:border-primary/30 group-hover:bg-primary/10"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </AnimateInView>
           ))}
         </div>
 
-        {/* Additional features row */}
-        <div className='mt-12 grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12'>
-          {additionalFeatures.map((f, i) => (
-            <AnimateInView
-              key={f.title}
-              delay={i * 100}
-              animation='fade-up'
-              className='flex flex-col items-center text-center'
-            >
-              <div className='text-muted-foreground border-border/50 bg-muted/30 group-hover:text-foreground mb-3 flex size-12 items-center justify-center rounded-xl border transition-colors'>
-                {f.icon}
-              </div>
-              <h3 className='mb-1.5 text-sm font-semibold'>{f.title}</h3>
-              <p className='text-muted-foreground max-w-[200px] text-xs leading-relaxed'>
-                {f.desc}
-              </p>
-            </AnimateInView>
-          ))}
-        </div>
       </div>
     </section>
   )

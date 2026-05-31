@@ -1,20 +1,8 @@
 /*
 Copyright (C) 2023-2026 QuantumNous
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-For commercial licensing, please contact support@quantumnous.com
+LCR API Stats Section — Organic Style
+Soft rounded cards with subtle gradient accents
 */
 import { useRef, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -77,7 +65,7 @@ function Counter(props: CounterProps) {
   }, [animate, end, prefix, suffix, formatValue])
 
   return (
-    <span ref={ref} className='tabular-nums'>
+    <span ref={ref} className="tabular-nums">
       {prefix}0{suffix}
     </span>
   )
@@ -91,38 +79,69 @@ interface StatItem {
   end: number
   suffix: string
   label: string
+  sublabel: string
   decimals?: number
+  gradient: string
 }
 
 export function Stats(_props: StatsProps) {
   const { t } = useTranslation()
 
   const stats: StatItem[] = [
-    { end: 50, suffix: '+', label: t('upstream services integrated') },
-    { end: 100, suffix: '+', label: t('model billing support') },
-    { end: 50, suffix: '+', label: t('compatible API routes') },
-    { end: 10, suffix: '+', label: t('scheduling controls') },
+    {
+      end: 50,
+      suffix: '+',
+      label: t('Upstream Nodes'),
+      sublabel: t('Integrated'),
+      gradient: 'organic-gradient-pink',
+    },
+    {
+      end: 100,
+      suffix: '+',
+      label: t('Pricing Models'),
+      sublabel: t('Token-precise'),
+      gradient: 'organic-gradient-cyan',
+    },
+    {
+      end: 50,
+      suffix: '+',
+      label: t('Endpoints'),
+      sublabel: t('OpenAI Native'),
+      gradient: 'organic-gradient-warm',
+    },
+    {
+      end: 99.9,
+      suffix: '%',
+      label: t('Availability'),
+      sublabel: t('SLA Guaranteed'),
+      decimals: 1,
+      gradient: 'organic-gradient-pink',
+    },
   ]
 
   return (
-    <div className='border-border/40 bg-muted/10 relative z-10 border-y'>
-      <div className='mx-auto max-w-6xl px-6 py-10 md:py-12'>
-        <div className='grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12'>
+    <section className="border-t border-foreground/8 px-6 py-16">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
           {stats.map((s) => (
             <div
               key={s.label}
-              className='flex flex-col items-center text-center'
+              className="organic-shadow relative overflow-hidden rounded-3xl border border-border/30 bg-card/60 p-8 md:p-10 backdrop-blur-sm transition-all duration-500 hover:border-primary/20 hover:organic-glow"
             >
-              <span className='text-2xl font-bold tracking-tight md:text-3xl'>
-                <Counter end={s.end} suffix={s.suffix} decimals={s.decimals} />
-              </span>
-              <span className='text-muted-foreground mt-1.5 text-xs'>
-                {s.label}
-              </span>
+              {/* Subtle organic accent */}
+              <div className={`pointer-events-none absolute -right-8 -bottom-8 h-24 w-24 animate-blob-morph-2 ${s.gradient} opacity-10`} aria-hidden="true" />
+              
+              <div className="relative z-10">
+                <div className="font-editorial text-4xl md:text-5xl text-foreground mb-6">
+                  <Counter end={s.end} suffix={s.suffix} decimals={s.decimals} />
+                </div>
+                <div className="text-sm font-semibold uppercase tracking-widest text-foreground">{s.label}</div>
+                <div className="text-xs text-muted-foreground mt-2">{s.sublabel}</div>
+              </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }
